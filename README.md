@@ -71,3 +71,27 @@ USING GPIO DRIVER
 
 		return 1;
 	}
+	
+USING INTERNAL FLASH DRIVER
+-----------------------------------------
+
+	#include "INTERNAL_FLASH_DRIVER.h"
+
+	int main (void)
+	{
+		uint32_t data = 0x19, readdata = 0;
+		uint32_t address = FLASH_DATA_PART_START_ADDRESS;
+
+		//ClearFlash();
+
+		ReadData(address, &readdata, 1);
+		if(readdata != data)
+			WriteData(address, &data, 1);
+
+		while(1)
+		{
+			//
+		}
+
+		return 1;
+	}
