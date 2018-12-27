@@ -4,7 +4,7 @@ This repo contains the specified MCU's pheripheral drivers.
 USING ADC DRIVER
 --------------------------
 
-#include "ADC_DRIVER.h"
+	#include "ADC_DRIVER.h"
 
 	int main (void)
 	{
@@ -19,6 +19,24 @@ USING ADC DRIVER
 			ReadADCValue(IN4, &adcValue_Pin4);
 			ReadADCValue(IN6, &adcValue_Pin6);
 			ReadADCValue(IN7, &adcValue_Pin7);
+		}
+
+		return 1;
+	}
+
+USING CLOCK CONFIGURATION
+----------------------------------------
+
+	#include "CLOCK_DRIVER.h"
+
+	int main (void)
+	{
+		//setup the clock configuration
+		InitClock(EXTERNAL, MHz_72);
+
+		while(1)
+		{
+			//
 		}
 
 		return 1;
