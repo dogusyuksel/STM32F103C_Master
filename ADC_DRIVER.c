@@ -23,7 +23,7 @@ ADC_ERRORS ReadADCValue(ADC_PINS pinNumber, uint16_t *data)
 	int i = 0;
 	for(i = 0; i < listLen; i++)
 	{
-		if(actualPinList[i] > OptDrv_ADC::IN7)
+		if(actualPinList[i] > IN7)
 		{
 			//it means error
 			return ADC_ERR_UNDEFINED_PIN;
