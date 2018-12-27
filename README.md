@@ -95,3 +95,29 @@ USING INTERNAL FLASH DRIVER
 
 		return 1;
 	}
+	
+	
+USING TIMER DRIVER
+-----------------------------
+
+
+	#include "TIMER_DRIVER.h"
+
+	void UserTIM3CallBack()
+	{
+		//do whatever you want successively in 6.5 seconds
+	}
+
+	int main (void)
+	{
+		ConfigureTimerWithInterrupt(TIM3, 6500, &UserTIM3CallBack);
+
+		while(1)
+		{
+			//
+		}
+
+		return 1;
+	}
+	
+	
