@@ -41,3 +41,33 @@ USING CLOCK CONFIGURATION
 
 		return 1;
 	}
+
+
+USING GPIO DRIVER
+----------------------------
+
+	#include "GPIO_DRIVER.h"
+
+	void dummy(void)
+	{
+		//use this function just like interrupt callback
+		ToggleGPIOPin(GPIOB, GPIO_Pin_13);
+	}
+
+	int main (void)
+	{
+		//set port B pin 13 as output
+		ConfigureGPIOPin(GPIOB, GPIO_Pin_13, OUTPUT);
+		//write the pin LOW
+		SetGPIOPin(GPIOB, GPIO_Pin_13, HIGH);
+
+		//set port A pin 7 as input with rising edge and callback with "dummy" function
+		ConfigureInputWithInterruptCallback(GPIOA, GPIO_Pin_7, RISING, &dummy);
+
+		while(1)
+		{
+			//this project toggles the led when button pressed.
+		}
+
+		return 1;
+	}
