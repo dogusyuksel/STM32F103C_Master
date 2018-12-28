@@ -121,3 +121,26 @@ USING TIMER DRIVER
 	}
 	
 	
+USING UART DRIVER
+------------------------------------
+
+	#include "UART_DRIVER.h"
+
+	int main (void)
+	{
+		ConfigureUART(USART3, uint32_t baudRate, uint16_t dataLen);
+
+		while(1)
+		{
+			uint8_t receivedBuff[20];
+			memset(receivedBuff, 0, 20);
+			UART_ERRORS errCondition = GetData(USART3, receivedBuff, 3, 10000);
+			if ((errCondition == UART_ERR_OK) && (strncmp((char *)receivedBuff, "OK\r", 3) == 0)) 
+			{
+				SendData(USART3, (uint8_t *)"OK REVEIVED\n", 12);
+			}
+		}
+
+		return 1;
+	}
+	
